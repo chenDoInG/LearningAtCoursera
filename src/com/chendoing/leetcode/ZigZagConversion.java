@@ -23,21 +23,21 @@ public class ZigZagConversion {
      */
     public String convert(String s, final int numRows) {
         StringBuilder sb = new StringBuilder();
-        int delta = 2 * (numRows - 1);
-        if(delta == 0)
-            delta = 1;
-        for(int i = numRows - 1, counter = 0; i >= 0; i--, counter++)
+        int deltaT = 2 * (numRows - 1);
+        if(deltaT == 0)
+            deltaT = 1;
+        for(int rowIndex = 1, counter = 0; rowIndex <=numRows; rowIndex++, counter++)
         {
-            int delta1 = 2 * i;
+            int deltaC = 2 * (numRows-rowIndex);
             int index = counter;
             while (index < s.length())
             {
                 sb.append(s.charAt(index));
-                if(i != numRows-1 && i != 0 && (index + delta1) < s.length())
+                if(rowIndex != numRows && rowIndex != 1 && (index + deltaC) < s.length())
                 {
-                    sb.append(s.charAt(index + delta1));
+                    sb.append(s.charAt(index + deltaC));
                 }
-                index += delta;
+                index += deltaT;
             }
         }
         return sb.toString();
@@ -45,6 +45,6 @@ public class ZigZagConversion {
 
     @Test
     public void convert(){
-        System.out.print(convert("PAYPALISHIRING",13));
+        System.out.print(convert("PAYPALISHIRING",4));
     }
 }
