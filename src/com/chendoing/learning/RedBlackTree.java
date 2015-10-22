@@ -149,4 +149,8 @@ public class RedBlackTree {
         }
         return node;
     }
+    
+    public String root(){
+        return root.number;
+    }
 }
