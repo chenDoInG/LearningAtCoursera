@@ -28,8 +28,6 @@ public class RemoveNthNodeFromEndofList {
         }
     }
 
-    private int indexFromEnd = 0;
-
     public ListNode removeNthFromEnd(ListNode head, int n) {
         if (head == null || n <= 0)
             return head;
