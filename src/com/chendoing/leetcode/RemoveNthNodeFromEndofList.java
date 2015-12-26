@@ -41,6 +41,7 @@ public class RemoveNthNodeFromEndofList {
                 slow = slow.next;
         }
 
+        //n总是有效的,所以slow.next永远不会null,不用增加slow.next的判断
         slow.next = slow.next.next;
 
         return virtual.next;
