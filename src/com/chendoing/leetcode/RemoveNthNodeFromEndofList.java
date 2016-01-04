@@ -13,7 +13,7 @@ import org.junit.Test;
  */
 public class RemoveNthNodeFromEndofList {
 
-    public class ListNode {
+    private class ListNode {
 
         int val;
         ListNode next;

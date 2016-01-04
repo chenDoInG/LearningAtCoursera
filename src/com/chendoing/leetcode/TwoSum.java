@@ -54,7 +54,7 @@ public class TwoSum {
         return result;
     }
 
-    public class ListNode {
+    private class ListNode {
 
         int val;
         ListNode next;

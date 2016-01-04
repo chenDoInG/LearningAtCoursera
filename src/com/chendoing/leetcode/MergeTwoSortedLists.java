@@ -7,7 +7,7 @@ import org.junit.Test;
  */
 public class MergeTwoSortedLists {
 
-    class ListNode {
+    private class ListNode {
         int val;
         ListNode next;
 

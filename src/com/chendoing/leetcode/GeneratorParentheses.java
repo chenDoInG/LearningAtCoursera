@@ -16,11 +16,11 @@ public class GeneratorParentheses {
         List<String> ret = new ArrayList<>();
         if (n <= 0)
             return ret;
-        searchPath(n,n,new StringBuffer(), ret);
+        searchPath(n, n, "", ret);
         return ret;
     }
 
-    private void searchPath(int left, int right, StringBuffer path, List<String> result) {
+    private void searchPath(int left, int right, String path, List<String> result) {
         if (left == 0 && right == 0) {
             result.add(String.valueOf(path));
             return;
@@ -28,17 +28,15 @@ public class GeneratorParentheses {
         if (left > right || left < 0) {
             return;
         }
-        searchPath(left - 1, right, path.append("("), result);
-        path.deleteCharAt(path.length() - 1);
-        searchPath(left, right - 1, path.append(")"), result);
-        path.deleteCharAt(path.length() - 1);
+        searchPath(left - 1, right, path + "(", result);
+        searchPath(left, right - 1, path + ")", result);
     }
 
     @Test
     public void generateParenthesis() {
         long start = System.currentTimeMillis();
-        System.out.println(generateParenthesis(9));
+        System.out.println(generateParenthesis(14));
         long end = System.currentTimeMillis();
-        System.out.println(end-start);
+        System.out.println(end - start);
     }
 }
