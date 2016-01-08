@@ -4,9 +4,10 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * Created by chenDoInG on 15/8/30.
+ *
  */
 public class RegularExpressionMatching {
+
     public boolean isMatch(String s, String p) {
         char[] ss = s.toCharArray();
         char[] pp = p.toCharArray();
@@ -30,8 +31,7 @@ public class RegularExpressionMatching {
     }
 
     boolean matches(char c, char p) {
-        if (p == '.') return true;
-        else return c == p;
+        return p == '.' || c == p;
     }
 
     @Test

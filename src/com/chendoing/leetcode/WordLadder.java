@@ -7,9 +7,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
 
-/**
- * Created by chenDoInG on 15/8/30.
- */
 public class WordLadder {
     public int ladderLength(String beginWord, String endWord, Set<String> wordDict) {
         if (!wordDict.contains(endWord))

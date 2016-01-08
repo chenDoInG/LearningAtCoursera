@@ -19,8 +19,8 @@ public class TwoSum {
      * <p>
      * Input: numbers={2, 7, 11, 15}, target=9 Output: index1=1, index2=2
      *
-     * @param nums
-     * @param target
+     * @param nums nums to sum
+     * @param target the sum of two num
      * @return int[]
      * @author : chenDoInG
      * @date : 2015年8月14日

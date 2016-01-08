@@ -2,9 +2,6 @@ package com.chendoing.leetcode;
 
 import org.junit.Test;
 
-/**
- * Created by chenDoInG on 15/8/21.
- */
 public class ZigZagConversion {
     /**
      * The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
@@ -17,9 +14,6 @@ public class ZigZagConversion {
 
      string convert(string text, int nRows);
      convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR".
-     * @param s
-     * @param numRows
-     * @return
      */
     public String convert(String s, final int numRows) {
         StringBuilder sb = new StringBuilder();

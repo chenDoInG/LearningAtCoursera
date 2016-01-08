@@ -2,9 +2,6 @@ package com.chendoing.leetcode;
 
 import org.junit.Test;
 
-/**
- * Created by chenDoInG on 15/8/23.
- */
 public class ReverseInteger {
 
     public int reverse(int x) {

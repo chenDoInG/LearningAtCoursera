@@ -3,7 +3,7 @@ package com.chendoing.leetcode;
 import org.junit.Test;
 
 /**
- * Created by chenDoInG on 15/8/23.
+ *
  */
 public class PalindromeNumber {
 
@@ -22,6 +22,6 @@ public class PalindromeNumber {
 
     @Test
     public void is(){
-        System.out.println(isPalindrome(12));
+        System.out.println(isPalindrome(121));
     }
 }

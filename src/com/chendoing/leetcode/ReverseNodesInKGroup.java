@@ -29,7 +29,7 @@ public class ReverseNodesInKGroup {
     }
 
     /**
-     * Reverse a link list between pre and next exclusively
+     * Reverse a link list between pre and tail exclusively
      * an example:
      * a linked list:
      * 0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 6
@@ -41,12 +41,13 @@ public class ReverseNodesInKGroup {
      * |        |    |
      * pre      last tail
      *
-     * @param pre
-     * @param tail
+     * @param pre node before list which will be reverse
+     * @param tail node after list which will be reverse
      * @return the reversed list's last node, which is the precedence of parameter next
      */
     private ListNode reverse(ListNode pre, ListNode tail) {
-        ListNode last = pre.next;//where first will be doomed "last"
+        //where first will be doomed "last"
+        ListNode last = pre.next;
         ListNode cursor = last.next;
         while (cursor != tail) {
             last.next = cursor.next;

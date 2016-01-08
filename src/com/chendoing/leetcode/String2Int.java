@@ -2,16 +2,13 @@ package com.chendoing.leetcode;
 
 import org.junit.Test;
 
-/**
- * Created by chenDoInG on 15/8/23.
- */
 public class String2Int {
 
     public int myAtoi(String str) {
         str = str.trim();
         if ("".equals(str)) return 0;
         int result = 0;
-        boolean positive = true;
+        boolean positive;
         int length = 0;
         if (str.charAt(0) == '-') positive = false;
         else if (str.charAt(0) == '+' || Character.isDigit(str.charAt(0))) {
@@ -36,6 +33,6 @@ public class String2Int {
 
     @Test
     public void myAtoi() {
-        System.out.println(myAtoi("-+1"));
+        System.out.println(myAtoi("-12222"));
     }
 }

@@ -28,13 +28,32 @@ public class RemoveNthNodeFromEndofList {
         }
     }
 
+    /**
+     * remove n node from the end of list
+     * a example: n = 2
+     * fast and slow
+     * |
+     * -1 -> 1 -> 2 -> 3 -> 4 -> 5
+     * when n = 0
+     * slow      fast
+     * |         |
+     * -1 ->1 -> 2 -> 3 -> 4 -> 5
+     * fast go to end of list
+     *               slow      fast
+     *                |         |
+     * -1 ->1 -> 2 -> 3 -> 4 -> 5
+     * slow.next is the node to remove
+     * @param head the head of list
+     * @param n the index from the end of list
+     * @return the head of removed list
+     */
     public ListNode removeNthFromEnd(ListNode head, int n) {
         if (head == null || n <= 0)
             return head;
         //增加一个虚拟的顶点,防止删除的是head时出错
-        ListNode virtual = new ListNode(-1);
-        virtual.next = head;
-        ListNode fast = virtual, slow = virtual;
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode fast = dummy, slow = dummy;
         while (fast.next != null) {
             fast = fast.next;
             if (n-- <= 0)
@@ -44,7 +63,7 @@ public class RemoveNthNodeFromEndofList {
         //n总是有效的,所以slow.next永远不会null,不用增加slow.next的判断
         slow.next = slow.next.next;
 
-        return virtual.next;
+        return dummy.next;
     }
 
     @Test

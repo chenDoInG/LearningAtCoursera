@@ -65,10 +65,8 @@ public class ValidParentheses {
 
     public boolean isValidByDp(String s) {
 
-        if (s == null || s.isEmpty() || s.length() % 2 != 0)
-            return false;
+        return !(s == null || s.isEmpty() || s.length() % 2 != 0) && validate(s, 1);
 
-        return validate(s, 1);
     }
 
     private boolean isValidByStack(String s) {
@@ -99,7 +97,7 @@ public class ValidParentheses {
 
     @Test
     public void isValidByDp() {
-        String s = "(";
+        String s = "(()))";
         System.out.println(isValidByDp(s));
         System.out.println(isValidByStack(s));
     }
