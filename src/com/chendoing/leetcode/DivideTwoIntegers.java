@@ -37,7 +37,7 @@ public class DivideTwoIntegers {
             while (divide >= dis << count) {
                 count++;
             }
-            //div<<count is larger than divide so must - 1
+            //div<<count is larger than divide, so must - 1
             count--;
             result += 1 << count;
             divide -= dis << count;
