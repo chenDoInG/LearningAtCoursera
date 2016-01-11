@@ -34,12 +34,6 @@ public class SubstringWithConcatenationOfAllWords {
         }
     }
 
-    private int slideWindow(String S, int begin, int wordLen, HashMap<String, Integer> words) {
-        String old = S.substring(begin, begin + wordLen);
-        addWord(old, words);
-        return begin + wordLen;
-    }
-
     /**
      * the explain see my blog:
      * http://chendoing.com/algorithm,java/2016/01/09/substring-with-concatenation-of-all-words/
@@ -50,9 +44,8 @@ public class SubstringWithConcatenationOfAllWords {
      */
     public ArrayList<Integer> findSubstring(String s, String[] words) {
         ArrayList<Integer> indices = new ArrayList<>();
-        if (words.length == 0) return indices;
-
-        int total = words.length, wordLen = words[0].length();
+        int total, wordLen;
+        if ((total = words.length) == 0 || (wordLen = words[0].length()) == 0 || s.length() < wordLen) return indices;
 
         // store the words and frequencies in a hash table
         HashMap<String, Integer> expectWords = new HashMap<>();
@@ -66,27 +59,24 @@ public class SubstringWithConcatenationOfAllWords {
         for (int i = 0; i < wordLen; i++) {
             // check if there are any concatenations
             check.clear();
-            int begin = i, cursor = i, count = 0;
-            while (begin <= s.length() - total * wordLen && cursor - begin <= total * wordLen) {
+            int begin = i, cursor = i;
+            while (begin <= s.length() - total * wordLen) {
                 String sub = s.substring(cursor, cursor + wordLen);
                 if (!expectWords.containsKey(sub)) {
                     begin = cursor + wordLen;
                     cursor = begin;
-                    count = 0;
                     check.clear();
-                } else if (Objects.equals(check.get(sub), expectWords.get(sub))) { // if duplicate, forward begin by 1
+                } else if (Objects.equals(check.get(sub), expectWords.get(sub))) {
+                    // if duplicate, forward begin
                     removeWord(s.substring(begin, begin + wordLen), check);
                     begin += wordLen;
-                    count--;
                 } else {
                     addWord(sub, check);
                     cursor += wordLen;
-                    ++count;
-                    if (count == total) {
+                    if (cursor - begin == total * wordLen) {
                         indices.add(begin);
                         begin += wordLen;
                         cursor = begin;
-                        count = 0;
                         check.clear();
                     }
                 }
