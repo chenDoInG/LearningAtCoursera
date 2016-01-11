@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * You are given a string, s, and a list of words, words,that are all of the same length.
@@ -18,7 +19,7 @@ public class SubstringWithConcatenationOfAllWords {
 
     private void addWord(String w, HashMap<String, Integer> words) {
         if (words.containsKey(w)) {
-            words.put(w, words.get(w)+1);
+            words.put(w, words.get(w) + 1);
         } else {
             words.put(w, 1);
         }
@@ -27,22 +28,23 @@ public class SubstringWithConcatenationOfAllWords {
     private void removeWord(String w, HashMap<String, Integer> words) {
         if (!words.containsKey(w)) return;
         if (words.get(w) > 1) {
-            words.put(w, words.get(w)-1);
+            words.put(w, words.get(w) - 1);
         } else {
             words.remove(w);
         }
     }
 
     private int slideWindow(String S, int begin, int wordLen, HashMap<String, Integer> words) {
-        String old = S.substring(begin, begin+wordLen);
+        String old = S.substring(begin, begin + wordLen);
         addWord(old, words);
-        return begin+wordLen;
+        return begin + wordLen;
     }
 
     /**
      * the explain see my blog:
      * http://chendoing.com/algorithm,java/2016/01/09/substring-with-concatenation-of-all-words/
-     * @param s giving string
+     *
+     * @param s     giving string
      * @param words lists of words
      * @return all starting indices of substring
      */
@@ -58,28 +60,34 @@ public class SubstringWithConcatenationOfAllWords {
             addWord(w, expectWords);
         }
 
+        HashMap<String, Integer> check = new HashMap<>();
+
         // find concatenations
-        for (int i=0; i < wordLen; i++) {
+        for (int i = 0; i < wordLen; i++) {
             // check if there are any concatenations
-            int count = 0;
-            HashMap<String, Integer> collectWords = new HashMap<>(expectWords);
-            for (int j = i, begin = i; j <= s.length() - (total-count)*wordLen && begin <= s.length() - total*wordLen;) {
-                String sub = s.substring(j, j+wordLen);
-                if (!expectWords.containsKey(sub)) { // if not an expect word, reset
-                    begin = j + wordLen;
-                    j = begin;
+            check.clear();
+            int begin = i, cursor = i, count = 0;
+            while (begin <= s.length() - total * wordLen && cursor - begin <= total * wordLen) {
+                String sub = s.substring(cursor, cursor + wordLen);
+                if (!expectWords.containsKey(sub)) {
+                    begin = cursor + wordLen;
+                    cursor = begin;
                     count = 0;
-                    collectWords.putAll(expectWords);
-                } else if (!collectWords.containsKey(sub)) { // if duplicate, forward begin by 1
-                    begin = slideWindow(s, begin, wordLen, collectWords);
+                    check.clear();
+                } else if (Objects.equals(check.get(sub), expectWords.get(sub))) { // if duplicate, forward begin by 1
+                    removeWord(s.substring(begin, begin + wordLen), check);
+                    begin += wordLen;
+                    count--;
                 } else {
-                    removeWord(sub, collectWords);
-                    j += wordLen;
+                    addWord(sub, check);
+                    cursor += wordLen;
                     ++count;
-                    if (collectWords.isEmpty()) {
+                    if (count == total) {
                         indices.add(begin);
-                        begin = slideWindow(s, begin, wordLen, collectWords);
-                        --count;
+                        begin += wordLen;
+                        cursor = begin;
+                        count = 0;
+                        check.clear();
                     }
                 }
             }
@@ -90,6 +98,7 @@ public class SubstringWithConcatenationOfAllWords {
 
     @Test
     public void findSubstring() {
-        System.out.print(findSubstring("abababcdcdabcdab", new String[]{"ab", "ab","cd","cd"}));
+        System.out.println(findSubstring("barfoothefoobarman", new String[]{"foo", "bar"}));
+        System.out.println(findSubstring("wordgoodgoodgoodbestword", new String[]{"word", "good", "best", "good"}));
     }
 }
