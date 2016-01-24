@@ -33,28 +33,8 @@ public class LongestValidParentheses {
         return max;
     }
 
-    private int dfs(String s, int start, int depth, int max) {
-        if (start == s.length())
-            return max;
-        if (s.charAt(start) == '(') {
-            max = dfs(s, start + 1, depth + 1, max);
-        }
-        if (s.charAt(start) == ')') {
-            if (depth != 0 && start == s.length() - 1)
-                return max;
-            if (depth == 0) {
-                max = Math.max(max, dfs(s, start + 1, 0, 0));
-            } else {
-                max = dfs(s, start + 1, depth - 1, max + 2);
-            }
-        }
-
-        return max;
-    }
-
     @Test
     public void longestValidParentheses() {
         System.out.println(longestValidParentheses(")()(())"));
-        System.out.println(dfs(")()(())",0,0,0));
     }
 }
