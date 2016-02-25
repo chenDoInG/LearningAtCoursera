@@ -42,5 +42,6 @@ public class SearchInsertPosition {
         System.out.println(searchInsert(new int[]{1,3,5,6},7));
         System.out.println(searchInsert(new int[]{1,3,5,6},0));
         System.out.println(searchInsert(new int[]{1,3},2));
+        System.out.println(4/3);
     }
 }
