@@ -57,6 +57,6 @@ public class LongestPalindrome {
 
     @Test
     public void longestPalindrome() {
-        System.out.println(longestPalindrome("aabaas"));
+        System.out.println(longestPalindrome("aabaabaab"));
     }
 }

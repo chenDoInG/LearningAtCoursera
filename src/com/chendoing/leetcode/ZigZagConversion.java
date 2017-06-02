@@ -39,6 +39,6 @@ public class ZigZagConversion {
 
     @Test
     public void convert(){
-        System.out.print(convert("PAYPALISHIRING",4));
+        System.out.print(convert("PAYPALISHIRING",3));
     }
 }
