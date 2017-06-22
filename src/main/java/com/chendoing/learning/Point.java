@@ -1,4 +1,5 @@
-import java.util.Arrays;
+package com.chendoing.learning;
+
 import java.util.Comparator;
 
 public class Point implements Comparable<Point> {

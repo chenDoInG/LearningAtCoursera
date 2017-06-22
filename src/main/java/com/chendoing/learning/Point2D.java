@@ -1,3 +1,5 @@
+package com.chendoing.learning;
+
 public class Point2D implements Comparable<Point2D> {
 
     private double x;

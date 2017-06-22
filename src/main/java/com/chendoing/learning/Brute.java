@@ -1,3 +1,5 @@
+package com.chendoing.learning;
+
 import java.util.Arrays;
 
 public class Brute {

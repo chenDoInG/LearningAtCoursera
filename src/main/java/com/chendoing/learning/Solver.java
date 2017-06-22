@@ -1,3 +1,5 @@
+package com.chendoing.learning;
+
 public class Solver {
     private final MinPQ<SearchNode> originalPq;
     private final MinPQ<SearchNode> twinPq;

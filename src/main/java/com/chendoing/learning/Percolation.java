@@ -1,3 +1,5 @@
+package com.chendoing.learning;
+
 public class Percolation {
 
     private WeightedQuickUnionUF uf;

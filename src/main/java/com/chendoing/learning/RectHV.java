@@ -1,3 +1,5 @@
+package com.chendoing.learning;
+
 /*************************************************************************
  * Compilation: javac RectHV.java Execution: java RectHV Dependencies:
  * Point2D.java

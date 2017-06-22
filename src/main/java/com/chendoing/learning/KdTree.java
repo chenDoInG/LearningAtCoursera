@@ -1,3 +1,5 @@
+package com.chendoing.learning;
+
 public class KdTree {
     private Node    root;
     private Point2D nearestPoint;
