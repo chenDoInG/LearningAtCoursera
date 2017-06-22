@@ -31,9 +31,15 @@ public class MaximumDistanceInArrays {
         for (List<Integer> array : arrays) {
             int currentMin = array.get(0);
             int currentMax = array.get(array.size() - 1);
-            min = Math.min(min, currentMin);
-            max = Math.max(max, currentMax);
-            distance = Math.abs(min - max);
+            if (min != Integer.MAX_VALUE) {
+                distance = Math.max(distance, Math.abs(min - currentMax));
+                distance = Math.max(distance, Math.abs(max - currentMin));
+                min = Math.min(min, currentMin);
+                max = Math.max(max, currentMax);
+            } else {
+                min = currentMin;
+                max = currentMax;
+            }
         }
         return distance;
     }

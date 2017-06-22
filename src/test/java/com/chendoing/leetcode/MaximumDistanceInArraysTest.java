@@ -17,4 +17,12 @@ public class MaximumDistanceInArraysTest {
         List<List<Integer>> arrays = Lists.newArrayList(array1, array2, array1);
         assertThat(MaximumDistanceInArrays.maxDistance(arrays)).isEqualTo(4);
     }
+
+    @Test
+    public void maxDistance1() throws Exception {
+        ArrayList<Integer> array1 = Lists.newArrayList(1, 4);
+        ArrayList<Integer> array2 = Lists.newArrayList(0, 5);
+        List<List<Integer>> arrays = Lists.newArrayList(array1, array2);
+        assertThat(MaximumDistanceInArrays.maxDistance(arrays)).isEqualTo(4);
+    }
 }
